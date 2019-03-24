@@ -10,6 +10,7 @@ export const body = css`
     font-size: ${theme.fontSize[fontSize || 'md']};
     font-weight: ${theme.fontWeight[fontWeight || 'medium']};
     color: ${theme.colors[color || 'text']};
+    line-height: 1.4em;
   `}
 `;
 const Text = styled.span`

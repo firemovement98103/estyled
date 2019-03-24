@@ -31,6 +31,12 @@ export const theme = {
     sm: '14px',
     md: '16px',
     lg: '24px',
+    1: '55px',
+    2: '46px',
+    3: '42px',
+    4: '28px',
+    5: '18px',
+    6: '14px',
   },
   fontWeight: {
     light: '200',
