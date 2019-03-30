@@ -9,12 +9,12 @@ const Link = styled(Anchor)`
   }
   ${({ theme, active }) => `
     padding: ${theme.spacing.sm()};
-    ${active && `
+    ${active ? `
       &&& {
         color: ${theme.colors.primary};
         font-weight: ${theme.fontWeight.heavy};
       }
-    `}
+    ` : ''}
   `}
 `;
 const NavSection = styled.div`

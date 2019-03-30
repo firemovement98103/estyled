@@ -8,13 +8,13 @@ const StyledFormField = styled.div`
   ${({ theme, error, required }) => `
     display: flex;
     flex-direction: column;
-    ${required && `
+    ${required ? `
       ${Label}:after {
         content: "*";
         color: ${theme.colors.error};
         margin-left: ${theme.spacing.xs()};
       }
-    `}
+    ` : ''}
     ${error ? `
       ${Label} {
         color: ${theme.colors.error};

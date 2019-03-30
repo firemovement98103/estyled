@@ -12,7 +12,7 @@ export default styled.a`
     &, :visited {
       color: ${theme.colors.text};
     }
-    ${body && `&&& { color: ${theme.colors.primary}; }`}
+    ${body ? `&&& { color: ${theme.colors.primary}; }` : ''}
     :hover {
       color: ${theme.colors.primary};
     }

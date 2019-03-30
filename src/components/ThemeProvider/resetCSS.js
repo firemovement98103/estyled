@@ -48,4 +48,10 @@ export default css`
       border-collapse: collapse;
       border-spacing: 0;
     }
+    html,body {
+      text-size-adjust: none;
+      -webkit-text-size-adjust: none;
+      -moz-text-size-adjust: none;
+      -ms-text-size-adjust: none;
+    }
 `;
