@@ -1,7 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
+import { baseBodyTextSansColor } from '../Text/Text';
 
-export default styled.input`
+export const sharedInputCSS = css`
   border-radius: 4px;
+  &::placeholder, & {
+    ${baseBodyTextSansColor}
+  }
   ${({ theme, error }) => `
     border: 1px solid ${theme.colors[error ? 'error' : 'borderLight']};
     color: ${theme.colors[error ? 'error' : 'text']};
@@ -11,3 +16,14 @@ export default styled.input`
     }
   `}
 `;
+const Input = styled.input`
+    ${sharedInputCSS}
+`;
+Input.propTypes = {
+  error: PropTypes.bool,
+};
+Input.defaultProps = {
+  error: false,
+};
+
+export default Input;

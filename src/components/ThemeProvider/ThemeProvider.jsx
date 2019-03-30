@@ -16,8 +16,9 @@ export const theme = {
     borderLight: '#D1D1D1',
     borderDark: '#A4A4A4',
     error: '#bb0000',
-    warn: '#ffcc00',
+    warn: '#ee9922',
     success: '#339900',
+    info: '#006070',
   },
   spacing: {
     size(size, uom = 'px') {

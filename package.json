@@ -28,7 +28,9 @@
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
     "@storybook/addon-a11y": "^3.4.12",
+    "babel-eslint": "^10.0.1",
     "babel-plugin-styled-components": "^1.10.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "concurrently": "^4.1.0",
     "eslint": "^5.15.3",
     "eslint-config-airbnb": "^17.1.0",
@@ -41,7 +43,6 @@
     "rollup-plugin-jsx": "^1.0.3",
     "rollup-plugin-node-resolve": "^4.0.1",
     "rollup-plugin-peer-deps-external": "^2.2.0",
-    "rollup-plugin-replace": "^2.1.1",
-    "storybook-addon-props": "^3.0.4"
+    "rollup-plugin-replace": "^2.1.1"
   }
 }
