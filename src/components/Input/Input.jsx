@@ -9,7 +9,7 @@ export const sharedInputCSS = css`
   }
   ${({ theme, error }) => `
     border: 1px solid ${theme.colors[error ? 'error' : 'borderLight']};
-    color: ${theme.colors[error ? 'error' : 'text']};
+    &::placeholder, & { color: ${theme.colors[error ? 'error' : 'text']}; }
     padding: ${theme.spacing.xs()};
     :focus {
       outline: 1px ${theme.colors[error ? 'error' : 'primary']} solid;
