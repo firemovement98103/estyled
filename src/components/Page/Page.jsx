@@ -5,9 +5,10 @@ const StyledPageContentSectionWrapper = styled.div`
 
 `;
 const StyledPageContentSection = styled.div`
+  margin: 0 auto;
   ${({ theme }) => `
-    margin: 0 auto;
     max-width: ${theme.sizing.content};
+    padding: ${theme.spacing.md()} 0;
   `}
 `;
 const Section = props => (
