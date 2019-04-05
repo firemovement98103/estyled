@@ -6,9 +6,10 @@
   "main": "dist/index.js",
   "scripts": {
     "storybook": "start-storybook -p 9001 -c ./src/.storybook",
-    "build": "rollup -c",
-    "watch-build": "rollup -c -w",
-    "dev": "concurrently --kill-others \"npm run watch-build\" \"npm run storybook\"",
+    "build": "npm run icons && rollup -c",
+    "watch-build": "npm run icons && rollup -c -w",
+    "icons": "npx @svgr/cli -d src/icons src/icons/src --icon --ext=jsx",
+    "dev": "npm run icons && concurrently --kill-others \"npm run watch-build\" \"npm run storybook\"",
     "prepublish": "npm run build"
   },
   "peerDependencies": {
@@ -18,7 +19,9 @@
   },
   "dependencies": {
     "@storybook/addon-a11y": "^3.4.12",
+    "@storybook/addons": "^5.0.6",
     "@storybook/react": "^5.0.5",
+    "@svgr/cli": "^4.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "styled-components": "^4.1.3"
