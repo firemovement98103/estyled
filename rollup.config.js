@@ -4,6 +4,7 @@ import babel from 'rollup-plugin-babel';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import replace from 'rollup-plugin-replace';
 import commonJS from 'rollup-plugin-commonjs';
+import svgr from '@svgr/rollup';
 
 export default {
   input: 'src/index.js',
@@ -27,6 +28,7 @@ export default {
     resolve({
       extensions: ['.js', '.jsx', '.json'],
     }),
+    svgr({ configFile: '.svgrrc' }),
     jsx({ factory: 'React.createElement' }),
     commonJS(),
   ],
