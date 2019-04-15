@@ -32,6 +32,7 @@ export const theme = {
     xxl() { return theme.spacing.size(6); },
   },
   fontSize: {
+    xs: '12px',
     sm: '14px',
     md: '16px',
     lg: '24px',
