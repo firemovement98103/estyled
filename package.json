@@ -9,7 +9,10 @@
     "build": "rollup -c",
     "watch-build": "rollup -c -w",
     "dev": "concurrently --kill-others \"npm run watch-build\" \"npm run storybook\"",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "build-storybook": "npx build-storybook -c src/.storybook -o public",
+    "deploy-storybook": "npx s3-deploy './public/**' --cwd './public/' --region us-west-2 --bucket estyled --gzip css,js,html,map --profile fire",
+    "build-and-deploy-storybook": "npm run build-storybook && npm run deploy-storybook"
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
