@@ -51,7 +51,17 @@ class StatefulLabeled extends React.Component {
 storiesOf('Checkbox', module)
   .add('Base Case', () => (
     <Stateful />
-  ))
+  ), {
+    info: {
+      propTables: [Checkbox],
+      propTablesExclude: [Stateful],
+    },
+  })
   .add('Labeled checkbox', () => (
     <StatefulLabeled />
-  ));
+  ), {
+    info: {
+      propTables: [Checkbox],
+      propTablesExclude: [StatefulLabeled],
+    },
+  });

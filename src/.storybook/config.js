@@ -2,6 +2,11 @@ import React from 'react';
 import ThemeProvider from '../components/ThemeProvider/ThemeProvider';
 import { configure, addDecorator  } from '@storybook/react';
 import { checkA11y } from '@storybook/addon-a11y';
+import { withInfo } from '@storybook/addon-info';
+
+addDecorator(withInfo({
+  inline: true
+}));
 addDecorator(checkA11y);
 addDecorator((storyFn) => <ThemeProvider>
   {storyFn()}

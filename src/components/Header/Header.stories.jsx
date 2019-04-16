@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import Header from './Header';
 
 storiesOf('Header', module)
@@ -48,5 +49,15 @@ storiesOf('Header', module)
         <Header.Link>Test</Header.Link>
         <Header.Link>Test</Header.Link>
       </Header.NavSection>
+    </Header>
+  ))
+  .add('Hamburger Interactions', () => (
+    <Header isOpen onHamburgerClick={action('Clicked Hamburger')}>
+      <Header.NavSection>
+        <Header.Link active>With active</Header.Link>
+        <Header.Link>Test</Header.Link>
+        <Header.Link>Test</Header.Link>
+      </Header.NavSection>
+      <Header.LogoContainer src="https://gdurl.com/Zvn1/" />
     </Header>
   ));

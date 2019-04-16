@@ -1,6 +1,8 @@
+import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-export default styled.button`
+const StyledButton = styled.button`
   ${({ theme, fluid, primary }) => `
     background-color: ${theme.colors[primary ? 'primary' : 'white']};
     color: ${theme.colors[primary ? 'primaryInverse' : 'primary']};
@@ -20,3 +22,16 @@ export default styled.button`
     }
   `};
 `;
+
+const Button = props => <StyledButton {...props} />;
+
+Button.propTypes = {
+  fluid: PropTypes.bool,
+  primary: PropTypes.bool,
+};
+Button.defaultProps = {
+  fluid: false,
+  primary: false,
+};
+
+export default Button;

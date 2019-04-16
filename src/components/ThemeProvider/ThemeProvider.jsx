@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { ThemeProvider, createGlobalStyle, css } from 'styled-components';
 import resetCSS from './resetCSS';
+
+const sizes = {
+  desktop: 1280,
+  tablet: 992,
+  phone: 520,
+};
 
 export const theme = {
   colors: {
@@ -51,6 +57,15 @@ export const theme = {
   sizing: {
     content: '1280px',
     wideContent: '1440px',
+  },
+  media: Object.keys(sizes).reduce((acc, label) => ({
+    ...acc,
+    [label]: (...args) => css`
+      @media (max-width: ${sizes[label]}px){${css(...args)}}
+    `,
+  }), {}),
+  zIndexing: {
+    mobileNav: 1,
   },
 };
 const ResetCSS = createGlobalStyle`

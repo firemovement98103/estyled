@@ -1,8 +1,23 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import Anchor from '../Anchor/Anchor';
+import Bars from '../../icons/bars.svg';
 
+const StyledBars = styled.div`
+  ${({ theme, open }) => css`
+    display: none;
+    ${theme.media.tablet`
+      display: block;
+      cursor: pointer;
+      line-height: 0;
+      &:hover svg {
+        fill: ${theme.colors.primary};
+      }
+      ${open ? `& svg { fill: ${theme.colors.primary}; }` : ''}
+    `}
+  `}
+`;
 const Link = styled(Anchor)`
   :hover {
     text-decoration: none;
@@ -18,10 +33,14 @@ const Link = styled(Anchor)`
   `}
 `;
 const NavSection = styled.div`
+  ${({ theme }) => css`
+    ${theme.media.tablet`
+      display: none;
+    `}
     &:last-child {
       text-align: right;
     }
-`;
+`}`;
 const Logo = styled.img`
   border: none;
 `;
@@ -61,29 +80,41 @@ const StyledHeaderContainer = styled.div`
   `};
 `;
 const StyledHeaderContent = styled.div`
-  ${({ theme }) => `
+  ${NavSection}, ${StyledLogoContainer} {
+    flex-basis: 33%;
+  }
+  ${({ theme }) => css`
     max-width: ${theme.sizing.wideContent};
+    ${theme.media.tablet`
+      ${StyledLogoContainer} {
+        flex-basis: 100%;
+      }
+    `}
   `}
   display: flex;
   align-items: center;
   height: 100%;
-  ${NavSection}, ${StyledLogoContainer} {
-    flex-basis: 33%;
-  }
   margin: 0 auto;
 `;
-const Header = ({ children }) => (
+const Header = ({ children, onHamburgerClick, isOpen }) => (
   <StyledHeaderContainer>
     <StyledHeaderContent>
+      <StyledBars onClick={onHamburgerClick} open={isOpen}>
+        <Bars />
+      </StyledBars>
       {children}
     </StyledHeaderContent>
   </StyledHeaderContainer>
 );
 Header.propTypes = {
   children: PropTypes.node,
+  onHamburgerClick: PropTypes.func,
+  isOpen: PropTypes.bool,
 };
 Header.defaultProps = {
   children: null,
+  onHamburgerClick: () => {},
+  isOpen: false,
 };
 Header.NavSection = NavSection;
 Header.Link = Link;

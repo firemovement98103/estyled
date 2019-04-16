@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledPageContentSectionWrapper = styled.div`
-
-`;
+const StyledPageContentSectionWrapper = styled.div``;
 const StyledPageContentSection = styled.div`
   margin: 0 auto;
   ${({ theme }) => `
@@ -23,7 +21,7 @@ const Page = styled.div`
       background-color: ${theme.colors.backgroundLight}
     }
     ${StyledPageContent} {
-      max-width: 1280px;
+      max-width: ${theme.sizing.content};
       margin: 0 auto;
     }
   `}
