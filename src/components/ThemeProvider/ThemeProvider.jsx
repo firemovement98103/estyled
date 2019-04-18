@@ -57,6 +57,7 @@ export const theme = {
   sizing: {
     content: '1280px',
     wideContent: '1440px',
+    headerHeight: '45px',
   },
   media: Object.keys(sizes).reduce((acc, label) => ({
     ...acc,

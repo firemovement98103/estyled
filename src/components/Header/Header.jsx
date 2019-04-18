@@ -72,8 +72,8 @@ LogoContainer.defaultProps = {
 };
 
 const StyledHeaderContainer = styled.div`
-  height: 45px;
   ${({ theme }) => `
+    height: ${theme.sizing.headerHeight};
     background-color: ${theme.colors.white};
     padding: ${theme.spacing.xs()};
     border-bottom: 1px solid ${theme.colors.borderLight};
