@@ -4,9 +4,11 @@ import { sharedInputCSS } from '../Input/Input';
 
 const TextArea = styled.textarea`
   ${sharedInputCSS}
+  border-radius: 4px;
   ${({
-    resize, height, width,
+    theme, error, resize, height, width,
   }) => `
+    border: 1px solid ${theme.colors[error ? 'error' : 'borderLight']};
     resize: ${resize};
     height: ${height};
     width: ${width};

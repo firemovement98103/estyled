@@ -11,7 +11,7 @@
     "dev": "concurrently --kill-others \"npm run watch-build\" \"npm run storybook\"",
     "prepublish": "npm run build",
     "build-storybook": "npx build-storybook -c src/.storybook -o public",
-    "deploy-storybook": "npx s3-deploy './public/**' --cwd './public/' --region us-west-2 --bucket estyled --gzip css,js,html,map --profile fire",
+    "deploy-storybook": "npx s3-deploy './public/**' --cwd './public/' --region us-west-2 --bucket estyled.ficarious.com --gzip css,js,html,map --profile fire --deleteRemoved",
     "build-and-deploy-storybook": "npm run build-storybook && npm run deploy-storybook"
   },
   "peerDependencies": {
