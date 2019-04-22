@@ -9,4 +9,7 @@ export default {
   onError: PropTypes.func,
   validateOnBlur: PropTypes.bool,
   onBlur: PropTypes.func,
+  formatter: PropTypes.func,
+  formatOnChange: PropTypes.bool,
+  formatOnBlur: PropTypes.bool,
 };

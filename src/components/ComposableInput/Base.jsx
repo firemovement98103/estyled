@@ -3,29 +3,45 @@ import PropTypes from './PropTypes';
 import Input from '../Input/Input';
 
 const Base = ({
-  value, parser, onChange, validator, validateOnChange, validateOnBlur, onError, onBlur, ...props
+  value,
+  parser,
+  onChange,
+  validator,
+  validateOnChange,
+  validateOnBlur,
+  onError,
+  onBlur,
+  formatter,
+  formatOnChange,
+  formatOnBlur,
+  ...props
 }) => {
-  const [internalValue, setValue] = useState(value);
-  const parseAndPersistToState = (inputValue, validate, additional) => {
+  const [displayValue, setDisplayValue] = useState(formatter(value) || '');
+  const parseAndPersistToState = (inputValue, validate, format, additional) => {
     const parsed = parser(inputValue);
-    setValue(inputValue);
     if (validate) {
       const errorReason = validator(parsed, inputValue);
       if (errorReason) {
         onError(errorReason, parsed, inputValue);
       }
     }
+    if (format && validate && !validator(parsed, inputValue)) {
+      const formatted = formatter(parsed);
+      setDisplayValue(formatted);
+    } else {
+      setDisplayValue(inputValue);
+    }
     additional(parsed, inputValue);
   };
   return (
     <Input
       {...props}
-      value={internalValue}
+      value={displayValue}
       onChange={({ target: { value: inputValue } }) => {
-        parseAndPersistToState(inputValue, validateOnChange, onChange);
+        parseAndPersistToState(inputValue, validateOnChange, formatOnChange, onChange);
       }}
       onBlur={({ target: { value: inputValue } }) => {
-        parseAndPersistToState(inputValue, validateOnBlur, onBlur);
+        parseAndPersistToState(inputValue, validateOnBlur, formatOnBlur, onBlur);
       }}
     />
   );
@@ -42,6 +58,9 @@ Base.defaultProps = {
   onError: () => {},
   validateOnBlur: true,
   onBlur: () => {},
+  formatter: val => val,
+  formatOnChange: false,
+  formatOnBlur: true,
 };
 
 export default Base;

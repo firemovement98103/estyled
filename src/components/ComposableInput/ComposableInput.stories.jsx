@@ -19,6 +19,16 @@ storiesOf('Composable Inputs', module)
       validator={value => (value.length % 2 === 0 && 'Even length is not ok')}
     />
   ))
+  .add('Formatter/Parser example', () => (
+    <Base
+      {...COMMON_PROPS}
+      parser={val => val.toLowerCase()}
+      formatter={val => val.toUpperCase()}
+      formatOnChange
+      validateOnChange
+      validator={value => value.includes('t') && 'Cannot include the letter t.'}
+    />
+  ))
   .add('Number Input', () => (
     <NumberInput
       {...COMMON_PROPS}
