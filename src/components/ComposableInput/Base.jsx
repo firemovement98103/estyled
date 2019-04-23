@@ -1,23 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from './PropTypes';
 import Input from '../Input/Input';
 
-const Base = ({
-  value,
-  parser,
-  onChange,
-  validator,
-  validateOnChange,
-  validateOnBlur,
-  onError,
-  onBlur,
-  formatter,
-  formatOnChange,
-  formatOnBlur,
-  ...props
-}) => {
-  const [displayValue, setDisplayValue] = useState(formatter(value) || '');
-  const parseAndPersistToState = (inputValue, validate, format, additional) => {
+export default class BaseInput extends React.Component {
+  static propTypes = {
+    ...PropTypes,
+  };
+
+  static defaultProps = {
+    value: '',
+    parser: val => val,
+    onChange: () => {},
+    validateOnChange: false,
+    validator: () => true,
+    onError: () => {},
+    validateOnBlur: true,
+    onBlur: () => {},
+    formatter: val => val,
+    formatOnChange: false,
+    formatOnBlur: true,
+  };
+
+  // eslint-disable-next-line react/destructuring-assignment
+  state = { displayValue: this.props.formatter(this.props.value) };
+
+  componentDidUpdate({ value: prevValue }) {
+    const { value, formatter } = this.props;
+    if (prevValue !== value) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({ displayValue: formatter(value) });
+    }
+  }
+
+  parseAndPersistToState = (inputValue, validate, format, additional) => {
+    const {
+      parser, formatter, validator, onError,
+    } = this.props;
     const parsed = parser(inputValue);
     if (validate) {
       const errorReason = validator(parsed, inputValue);
@@ -27,40 +45,50 @@ const Base = ({
     }
     if (format && validate && !validator(parsed, inputValue)) {
       const formatted = formatter(parsed);
-      setDisplayValue(formatted);
+      this.setState({
+        displayValue: formatted,
+      });
     } else {
-      setDisplayValue(inputValue);
+      this.setState({
+        displayValue: inputValue,
+      });
     }
     additional(parsed, inputValue);
   };
-  return (
-    <Input
-      {...props}
-      value={displayValue}
-      onChange={({ target: { value: inputValue } }) => {
-        parseAndPersistToState(inputValue, validateOnChange, formatOnChange, onChange);
-      }}
-      onBlur={({ target: { value: inputValue } }) => {
-        parseAndPersistToState(inputValue, validateOnBlur, formatOnBlur, onBlur);
-      }}
-    />
-  );
-};
-Base.propTypes = {
-  ...PropTypes,
-};
-Base.defaultProps = {
-  value: '',
-  parser: val => val,
-  onChange: () => {},
-  validateOnChange: false,
-  validator: () => true,
-  onError: () => {},
-  validateOnBlur: true,
-  onBlur: () => {},
-  formatter: val => val,
-  formatOnChange: false,
-  formatOnBlur: true,
-};
 
-export default Base;
+  onChange = ({ target: { value } }) => {
+    const { validateOnChange, formatOnChange, onChange } = this.props;
+    this.parseAndPersistToState(value, validateOnChange, formatOnChange, onChange);
+  };
+
+  onBlur = ({ target: { value } }) => {
+    const { validateOnBlur, formatOnBlur, onBlur } = this.props;
+    this.parseAndPersistToState(value, validateOnBlur, formatOnBlur, onBlur);
+  }
+
+  render() {
+    const {
+      value,
+      parser,
+      onChange,
+      validator,
+      validateOnChange,
+      validateOnBlur,
+      onError,
+      onBlur,
+      formatter,
+      formatOnChange,
+      formatOnBlur,
+      ...props
+    } = this.props;
+    const { displayValue } = this.state;
+    return (
+      <Input
+        {...props}
+        value={displayValue}
+        onChange={this.onChange}
+        onBlur={this.onBlur}
+      />
+    );
+  }
+}
