@@ -12,7 +12,7 @@ export default class BaseInput extends React.Component {
     parser: val => val,
     onChange: () => {},
     validateOnChange: false,
-    validator: () => true,
+    validator: () => false,
     onError: () => {},
     validateOnBlur: true,
     onBlur: () => {},
