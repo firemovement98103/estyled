@@ -7,8 +7,8 @@ import Input from '../Input/Input';
 storiesOf('Form Field', module)
   .add('Base Case', () => (
     <FormField>
-      <Label>Test Label</Label>
-      <Input placeholder="Basic usage" />
+      <Label htmlFor="test">Test Label</Label>
+      <Input id="test" placeholder="Basic usage" />
     </FormField>
   ))
   .add('Error case', () => (

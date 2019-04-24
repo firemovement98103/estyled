@@ -56,19 +56,21 @@ const StyledLogoContainer = styled.a`
   align-items: center;
 `;
 const LogoContainer = ({
-  src, children, ...props
+  src, children, alt, ...props
 }) => (
   <StyledLogoContainer {...props}>
-    {src ? <Logo src={src} /> : children}
+    {src ? <Logo src={src} alt={alt} /> : children}
   </StyledLogoContainer>
 );
 LogoContainer.propTypes = {
   children: PropTypes.node,
   src: PropTypes.string,
+  alt: PropTypes.string,
 };
 LogoContainer.defaultProps = {
   children: null,
   src: null,
+  alt: null,
 };
 
 const StyledHeaderContainer = styled.div`
