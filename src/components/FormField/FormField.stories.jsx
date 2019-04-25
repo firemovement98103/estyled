@@ -14,12 +14,12 @@ storiesOf('Form Field', module)
   .add('Error case', () => (
     <FormField error="An error occurred">
       <Label>Test Label</Label>
-      <Input placeholder="Error field" error />
+      <Input id="test2" placeholder="Error field" error />
     </FormField>
   ))
   .add('Required', () => (
     <FormField required>
       <Label>Test Label</Label>
-      <Input placeholder="Required field" />
+      <Input id="test3" placeholder="Required field" />
     </FormField>
   ));
