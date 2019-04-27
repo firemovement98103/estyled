@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const StyledButton = styled.button`
   ${({ theme, fluid, primary }) => `
     background-color: ${theme.colors[primary ? 'primary' : 'white']};
-    color: ${theme.colors[primary ? 'primaryInverse' : 'primary']};
+    color: ${theme.colors[primary ? 'white' : 'primary']};
     border: 1px solid ${theme.colors.primary};
     padding: ${theme.spacing.xs()} ${theme.spacing.md()} ${theme.spacing.xs()} ${theme.spacing.md()};
     border-radius: ${theme.spacing.size(1, '') / 2}px;

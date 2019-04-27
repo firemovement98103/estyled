@@ -32,7 +32,7 @@ const Link = styled(Anchor)`
     ` : ''}
   `}
 `;
-const NavSection = styled.div`
+const NavSection = styled.nav`
   ${({ theme }) => css`
     ${theme.media.tablet`
       display: none;
@@ -99,14 +99,16 @@ const StyledHeaderContent = styled.div`
   margin: 0 auto;
 `;
 const Header = ({ children, onHamburgerClick, isOpen }) => (
-  <StyledHeaderContainer>
-    <StyledHeaderContent>
-      <StyledBars onClick={onHamburgerClick} open={isOpen}>
-        <Bars />
-      </StyledBars>
-      {children}
-    </StyledHeaderContent>
-  </StyledHeaderContainer>
+  <heading>
+    <StyledHeaderContainer>
+      <StyledHeaderContent>
+        <StyledBars onClick={onHamburgerClick} open={isOpen}>
+          <Bars />
+        </StyledBars>
+        {children}
+      </StyledHeaderContent>
+    </StyledHeaderContainer>
+  </heading>
 );
 Header.propTypes = {
   children: PropTypes.node,

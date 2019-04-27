@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledPageContentSectionWrapper = styled.div``;
+const StyledPageContentSectionWrapper = styled.section``;
 const StyledPageContentSection = styled.div`
   margin: 0 auto;
   ${({ theme }) => `
@@ -15,7 +15,7 @@ const Section = props => (
   </StyledPageContentSectionWrapper>
 );
 const StyledPageContent = styled.div``;
-const Page = styled.div`
+const Page = styled.main`
   ${({ theme }) => `
     ${StyledPageContentSectionWrapper}:nth-child(even) {
       background-color: ${theme.colors.backgroundLight}
