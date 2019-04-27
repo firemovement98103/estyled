@@ -37,6 +37,7 @@ const StyledInputContainer = styled.label`
 `;
 const StyledInput = styled.input`
     ${sharedInputCSS}
+    width: 100%;
     border: none;
     &:focus {
       outline: none;
