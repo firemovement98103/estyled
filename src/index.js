@@ -15,3 +15,4 @@ export { default as Paragraph } from './components/Paragraph/Paragraph';
 export { default as Text } from './components/Text/Text';
 export { default as TextArea } from './components/TextArea/TextArea';
 export { default as ThemeProvider } from './components/ThemeProvider/ThemeProvider';
+export { default as Select } from './components/Select/Select';
