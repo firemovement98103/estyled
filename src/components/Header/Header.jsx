@@ -99,7 +99,7 @@ const StyledHeaderContent = styled.div`
   margin: 0 auto;
 `;
 const Header = ({ children, onHamburgerClick, isOpen }) => (
-  <heading>
+  <header>
     <StyledHeaderContainer>
       <StyledHeaderContent>
         <StyledBars onClick={onHamburgerClick} open={isOpen}>
@@ -108,7 +108,7 @@ const Header = ({ children, onHamburgerClick, isOpen }) => (
         {children}
       </StyledHeaderContent>
     </StyledHeaderContainer>
-  </heading>
+  </header>
 );
 Header.propTypes = {
   children: PropTypes.node,
