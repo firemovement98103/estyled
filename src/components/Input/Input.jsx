@@ -44,21 +44,24 @@ const StyledInput = styled.input`
     }
 `;
 const Input = ({
-  error, left, right, id, ...props
+  error, left, right, id, className, ...props
 }) => (
-  <StyledInputContainer error={error} htmlFor={id}>
+  <StyledInputContainer error={error} htmlFor={id} className={className}>
     {left && <StyledSymbol left htmlFor={id} error={error}>{left}</StyledSymbol>}
     <StyledInput id={id} error={error} {...props} hasLeft={!!left} hasRight={!!right} />
     {right && <StyledSymbol right htmlFor={id} error={error}>{right}</StyledSymbol>}
   </StyledInputContainer>
 );
+Input.InternalStyledInput = StyledInput;
 Input.propTypes = {
+  className: PropTypes.string,
   error: PropTypes.bool,
   id: PropTypes.string.isRequired,
   left: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
   right: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 };
 Input.defaultProps = {
+  className: null,
   error: false,
   left: null,
   right: null,

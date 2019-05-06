@@ -27,7 +27,6 @@ export default class BaseInput extends React.Component {
   componentDidUpdate({ value: prevValue }) {
     const { value, formatter } = this.props;
     if (prevValue !== value) {
-      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ displayValue: formatter(value) });
     }
   }
