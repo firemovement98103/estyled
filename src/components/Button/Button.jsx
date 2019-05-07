@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledButton = styled.button`
@@ -33,5 +33,8 @@ Button.defaultProps = {
   fluid: false,
   primary: false,
 };
+Button.buttonLike = css`
+  cursor: pointer;
+`;
 
 export default Button;

@@ -19,4 +19,5 @@ const NumberInput = ({ ...props }) => (
 NumberInput.propTypes = {
   ...PropTypes,
 };
+NumberInput.StyledInput = Base.StyledInput;
 export default NumberInput;

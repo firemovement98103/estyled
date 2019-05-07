@@ -21,6 +21,8 @@ export default class BaseInput extends React.Component {
     formatOnBlur: true,
   };
 
+  StyledInput = Input.StyledInput;
+
   // eslint-disable-next-line react/destructuring-assignment
   state = { displayValue: this.props.formatter(this.props.value) };
 

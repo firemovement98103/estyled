@@ -28,6 +28,7 @@ const StyledInputContainer = styled.label`
     border-radius: 4px;
     display: inline-flex;
     align-items: center;
+    width: 100%;
     ${({ theme, error }) => `
       :focus-within {
         border: 1px solid ${theme.colors[error ? 'error' : 'primary']}
@@ -53,6 +54,7 @@ const Input = ({
   </StyledInputContainer>
 );
 Input.InternalStyledInput = StyledInput;
+Input.StyledInput = StyledInputContainer;
 Input.propTypes = {
   className: PropTypes.string,
   error: PropTypes.bool,

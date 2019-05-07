@@ -46,21 +46,24 @@ const StyledSelect = styled.select`
     padding-right: calc(${theme.spacing.sm()} + 1em);
   `}
 `;
-const Select = ({ options, ...props }) => (
-  <StyledSelectWrapper>
+const Select = ({ options, className, ...props }) => (
+  <StyledSelectWrapper className={className}>
     <StyledSelect {...props}>
       {options.map(({ value, label }) => <option value={value} key={value}>{label}</option>)}
     </StyledSelect>
     <StyledCaretDown />
   </StyledSelectWrapper>
 );
+Select.StyledSelect = StyledSelectWrapper;
 Select.propTypes = {
+  className: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
   })),
 };
 Select.defaultProps = {
+  className: null,
   options: [],
 };
 

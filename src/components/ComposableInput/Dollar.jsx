@@ -6,4 +6,5 @@ const Dollar = ({ ...props }) => (<NumberInput {...props} left="$" />);
 Dollar.propTypes = {
   ...PropTypes,
 };
+Dollar.StyledInput = NumberInput.StyledInput;
 export default Dollar;

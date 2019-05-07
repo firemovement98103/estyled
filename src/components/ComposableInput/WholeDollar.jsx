@@ -6,4 +6,5 @@ const WholeDollar = ({ ...props }) => (<WholeNumberInput {...props} left="$" />)
 WholeDollar.propTypes = {
   ...PropTypes,
 };
+WholeDollar.StyledInput = WholeNumberInput.StyledInput;
 export default WholeDollar;

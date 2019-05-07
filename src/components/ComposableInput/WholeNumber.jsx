@@ -9,4 +9,5 @@ const WholeNumberInput = ({ ...props }) => (<Base {...props} parser={float} vali
 WholeNumberInput.propTypes = {
   ...PropTypes,
 };
+WholeNumberInput.StyledInput = Base.StyledInput;
 export default WholeNumberInput;
